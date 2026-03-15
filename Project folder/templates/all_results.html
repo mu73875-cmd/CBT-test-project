@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>All Results</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="navbar">
+
+<a href="/home">Home</a>
+<a href="/logout">Logout</a>
+
+</div>
+
+<div class="container">
+
+<h1>All CBT Results</h1>
+
+<table border="1">
+
+<tr>
+<th>Name</th>
+<th>Score</th>
+<th>Total</th>
+<th>Time</th>
+</tr>
+
+{% for r in results %}
+
+<tr>
+
+<td>{{ r.name }}</td>
+<td>{{ r.score }}</td>
+<td>{{ r.total }}</td>
+<td>{{ r.time }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Mini CBT Login</title>
+
+<style>
+
+body{
+font-family: Arial;
+background:#f4f4f4;
+}
+
+.container{
+width:400px;
+margin:auto;
+background:white;
+padding:20px;
+margin-top:100px;
+border-radius:8px;
+}
+
+.step{
+display:none;
+}
+
+.step.active{
+display:block;
+}
+
+button{
+padding:10px 20px;
+margin-top:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>COMPUTER BASE TEST (CBT)</h1>
+
+<form method="POST" action="/">
+
+<!-- STEP 1 -->
+
+<div id="step1" class="step active">
+
+<h3>Step 1: Candidate Information</h3>
+
+<label>Full Name</label><br>
+<input type="text" name="username" id="username" required>
+
+<br><br>
+
+<button type="button" onclick="nextStep()">Next</button>
+
+</div>
+
+
+<!-- STEP 2 -->
+
+<div id="step2" class="step">
+
+<h3>Step 2: Start Examination</h3>
+
+<p>Click Start when you are ready to begin the CBT.</p>
+
+<button type="button" onclick="prevStep()">Back</button>
+
+<button type="submit">Start Test</button>
+
+</div>
+
+</form>
+
+</div>
+
+
+<script>
+
+function nextStep(){
+
+var name = document.getElementById("username").value;
+
+if(name === ""){
+alert("Please enter your name first");
+return;
+}
+
+document.getElementById("step1").classList.remove("active");
+document.getElementById("step2").classList.add("active");
+
+}
+
+function prevStep(){
+
+document.getElementById("step2").classList.remove("active");
+document.getElementById("step1").classList.add("active");
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,27 +1,85 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Login</title>
+<title>CBT Login</title>
+
+<style>
+
+body{
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #4facfe, #00f2fe);
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    width: 350px;
+    margin: 100px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+h1{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+label{
+    font-weight: bold;
+}
+
+input{
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button{
+    width: 100%;
+    padding: 12px;
+    background: #4facfe;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover{
+    background: #007bff;
+}
+
+</style>
+
 </head>
 
 <body>
 
-<h2>CBT Login</h2>
+<div class="container">
+
+<h1>CBT Login</h1>
 
 <form method="POST">
 
-<label>Full Name:</label><br>
-<input type="text" name="username" required><br><br>
+<label>Full Name</label>
+<input type="text" name="username" required>
 
-<label>Matric Number:</label><br>
-<input type="text" name="matric" required><br><br>
+<label>Matric Number</label>
+<input type="text" name="matric" required>
 
-<label>Date of Birth:</label><br>
-<input type="date" name="dob" required><br><br>
+<label>Date of Birth</label>
+<input type="date" name="dob" required>
 
 <button type="submit">Start Test</button>
 
 </form>
+
+</div>
 
 </body>
 </html>

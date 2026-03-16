@@ -18,11 +18,13 @@
 
 <h1>Test Result</h1>
 
-<p>Candidate: {{ user }}</p>
+<p><strong>Candidate:</strong> {{ user }}</p>
+<p><strong>Matric Number:</strong> {{ matric }}</p>
+<p><strong>Date of Birth:</strong> {{ dob }}</p>
 
-<p>Score: {{ score }} / {{ total }}</p>
+<p><strong>Score:</strong> {{ score }} / {{ total }}</p>
 
-<p>Submitted At: {{ time }}</p>
+<p><strong>Submitted At:</strong> {{ time }}</p>
 
 <a href="{{ url_for('home') }}">
 <button>Back Home</button>

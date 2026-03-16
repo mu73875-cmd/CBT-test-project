@@ -10,7 +10,7 @@ app.secret_key = "secret123"
 questions = [
 
 Question(
-"he Internet is best defined as:",
+"The Internet is best defined as:",
 ["single computer network","collection of isolated computers","A global network of interconnected computers","A local area network"],
 "A global network of interconnected computers"
 ),

@@ -23,4 +23,4 @@ python app.py
 
 http://127.0.0.1:5000
 
-You can now take the CBT test.
+You can now take the CBT test

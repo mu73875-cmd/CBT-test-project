@@ -16,7 +16,7 @@ Question(
 ),
 
 Question(
-"What does “IP” stand for in Internet terminology?",
+"What does IP stand for in Internet terminology?",
 ["Internet Path","Internet Provider","Internet Protocol","Internal Process"],
 "Internet Protocol"
 ),
@@ -90,14 +90,19 @@ Question(
 ]
 
 
-
 @app.route("/", methods=["GET","POST"])
 def login():
 
     if request.method == "POST":
 
         username = request.form["username"]
+        matric = request.form["matric"]
+        dob = request.form["dob"]
+
         session["user"] = username
+        session["matric"] = matric
+        session["dob"] = dob
+
         return redirect("/home")
 
     return render_template("login.html")
@@ -172,6 +177,8 @@ def result():
 
     result_data = {
         "name": session["user"],
+        "matric": session["matric"],
+        "dob": session["dob"],
         "score": score,
         "total": len(questions),
         "time": time
@@ -193,7 +200,9 @@ def result():
         score=score,
         total=len(questions),
         time=time,
-        user=session["user"]
+        user=session["user"],
+        matric=session["matric"],
+        dob=session["dob"]
     )
 
 

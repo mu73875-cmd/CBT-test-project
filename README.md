@@ -1,4 +1,4 @@
-# CBT-test-project# Mini CBT Flask App
+# Mini CBT Flask App
 
 This project is a simple **Computer Based Test (CBT) system** built using the Flask web framework in Python.
 The application allows students to log in, take a test, and view their results after completing the quiz.

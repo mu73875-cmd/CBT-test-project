@@ -20,6 +20,7 @@ Question(
 ["Internet Path","Internet Provider","Internet Protocol","Internal Process"],
 "Internet Protocol"
 ),
+
 Question("Which is an input device?",
 ["Printer","Speaker","Keyboard","Monitor"],
 "Keyboard"),
@@ -34,7 +35,26 @@ Question("Which software is used to browse the internet?",
 
 Question("What is the full meaning of PDF?",
 ["Portable Document Format","Print Document File","Public Data File","Personal Document Format"],
-"Portable Document Format")
+"Portable Document Format"),
+Question("What does USB stand for?",
+["Universal Serial Bus","United System Board","Universal System Bus","User Serial Base"],
+"Universal Serial Bus"),
+
+Question("Which of these is an operating system?",
+["Windows","Google","Intel","Facebook"],
+"Windows"),
+
+Question("What is the brain of the computer?",
+["Monitor","Keyboard","CPU","Mouse"],
+"CPU"),
+
+Question("Which key is used to delete text?",
+["Shift","Ctrl","Delete","Tab"],
+"Delete"),
+
+Question("Which device displays output?",
+["Keyboard","Monitor","Mouse","Scanner"],
+"Monitor"),
 
 Question(
 "Python is a?",

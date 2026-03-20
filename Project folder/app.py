@@ -41,6 +41,22 @@ Question("Which is an input device?",
 ["Printer","Speaker","Keyboard","Monitor"],
 "Keyboard"),
 
+Question("Which device is used for pointing?",
+["Keyboard","Mouse","Monitor","Printer"],
+"Mouse"),
+
+Question("Which company makes iPhone?",
+["Samsung","Apple","Nokia","Huawei"],
+"Apple"),
+
+Question("Which is an input device?",
+["Printer","Speaker","Keyboard","Monitor"],
+"Keyboard"),
+
+Question("What does GPU stand for?",
+["Graphics Processing Unit","General Processing Unit","Graphical Program Unit","Global Processing Unit"],
+"Graphics Processing Unit"),
+
 Question("What does GPU stand for?",
 ["Graphics Processing Unit","General Processing Unit","Graphical Program Unit","Global Processing Unit"],
 "Graphics Processing Unit"),

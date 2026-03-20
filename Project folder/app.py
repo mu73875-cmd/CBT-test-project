@@ -21,6 +21,22 @@ Question(
 "Internet Protocol"
 ),
 
+Question("What does WWW stand for?",
+["World Wide Web","World Web Wide","Wide World Web","Web World Wide"],
+"World Wide Web"),
+
+Question("Which is a programming language?",
+["HTML","CSS","Python","HTTP"],
+"Python"),
+
+Question("Which part of computer stores data permanently?",
+["RAM","ROM","CPU","Cache"],
+"ROM"),
+
+Question("What does LAN stand for?",
+["Local Area Network","Large Area Network","Long Area Network","Light Area Network"],
+"Local Area Network"),
+
 Question("Which is an input device?",
 ["Printer","Speaker","Keyboard","Monitor"],
 "Keyboard"),

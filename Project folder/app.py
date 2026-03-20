@@ -20,6 +20,21 @@ Question(
 ["Internet Path","Internet Provider","Internet Protocol","Internal Process"],
 "Internet Protocol"
 ),
+Question("Which is an input device?",
+["Printer","Speaker","Keyboard","Monitor"],
+"Keyboard"),
+
+Question("What does GPU stand for?",
+["Graphics Processing Unit","General Processing Unit","Graphical Program Unit","Global Processing Unit"],
+"Graphics Processing Unit"),
+
+Question("Which software is used to browse the internet?",
+["Excel","Chrome","Word","Paint"],
+"Chrome"),
+
+Question("What is the full meaning of PDF?",
+["Portable Document Format","Print Document File","Public Data File","Personal Document Format"],
+"Portable Document Format")
 
 Question(
 "Python is a?",

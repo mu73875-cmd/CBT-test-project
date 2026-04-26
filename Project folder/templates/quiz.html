@@ -2,110 +2,173 @@
 <html>
 
 <head>
-
-<title>Quiz</title>
-
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-
+    <title>Quiz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
 
 <div class="navbar">
-
-<a href="{{ url_for('home') }}">Home</a>
-<a href="{{ url_for('logout') }}">Logout</a>
-
+    <a href="{{ url_for('home') }}">Home</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
 </div>
 
 <div class="container">
 
-<h3>Time Left: <span id="timer">05:00</span></h3>
+    <h3>Time Left: <span id="timer">05:00</span></h3>
 
-<h2>Question {{ qnum + 1 }} of {{ total }}</h2>
+    <h2>Question {{ qnum + 1 }} of {{ total }}</h2>
 
-<form method="POST">
+    <form method="POST">
+        {{ csrf_token() }}
 
-<p><b>{{ question.question }}</b></p>
+        <p><b>{{ question.question }}</b></p>
 
-{% for option in question.options %}
+        {% for option in question.options %}
+            <input type="radio" name="answer" value="{{ option }}" required>
+            {{ option }} <br>
+        {% endfor %}
 
-<input type="radio" name="answer" value="{{ option }}" required>
-{{ option }} <br>
+        <br>
+        <button type="submit">Next</button>
+    </form>
 
-{% endfor %}
+    <hr>
 
-<br>
+    <h3>Question Panel</h3>
 
-<button type="submit">Next</button>
+    <div class="question-panel">
+        {% for i in range(total) %}
+            <button 
+                type="button"
+                disabled
+                class="{% if session.get('answers') and session.get('answers').get(i|string) %}answered{% else %}unanswered{% endif %}">
+                {{ i + 1 }}
+            </button>
+        {% endfor %}
+    </div>
 
-</form>
+    <br><br>
 
-<hr>
-
-<h3>Question Panel</h3>
-
-<div class="question-panel">
-
-{% for i in range(total) %}
-
-<a href="/quiz/{{ i }}">
-<button 
-type="button"
-class="{% if session['answers'] and session['answers'].get(i|string) %}answered{% else %}unanswered{% endif %}">
-{{ i + 1 }}
-</button>
-</a>
-
-{% endfor %}
-
-</div>
-
-<br><br>
-
-<a href="/result">
-<button type="button">Submit Test</button>
-</a>
+    <button type="button" onclick="window.location.href='/result'">
+        Submit Test
+    </button>
 
 </div>
 
 <script>
 
-let time = 300;
+// ✅ TIMER (FIXED)
+let time = parseInt(sessionStorage.getItem("time")) || 300;
 
 function startTimer(){
+    let timer = document.getElementById("timer");
 
-let timer = document.getElementById("timer");
+    let countdown = setInterval(function(){
 
-let countdown = setInterval(function(){
+        let minutes = Math.floor(time / 60);
+        let seconds = time % 60;
 
-let minutes = Math.floor(time / 60);
-let seconds = time % 60;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
 
-seconds = seconds < 10 ? "0" + seconds : seconds;
+        timer.innerHTML = minutes + ":" + seconds;
 
-timer.innerHTML = minutes + ":" + seconds;
+        time--;
+        sessionStorage.setItem("time", time);
 
-time--;
+        if(time < 0){
+            clearInterval(countdown);
+            alert("Time is up! Submitting test...");
+            window.location.href = "/result";
+        }
 
-if(time < 0){
-
-clearInterval(countdown);
-
-alert("Time is up! Submitting test...");
-
-window.location.href = "/result";
-
-}
-
-},1000);
-
+    },1000);
 }
 
 startTimer();
 
+
+// ✅ CLEAN SUBMIT FUNCTION
+function submitTest() {
+    sessionStorage.removeItem("time");
+    window.location.href = "/result";
+}
+
+
+// 🔒 FULLSCREEN (on first click)
+function openFullscreen() {
+    let elem = document.documentElement;
+    if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+    }
+}
+
+document.addEventListener("click", function () {
+    openFullscreen();
+}, { once: true });
+
+
+// 🔒 EXIT FULLSCREEN = SUBMIT
+document.addEventListener("fullscreenchange", function () {
+    if (!document.fullscreenElement) {
+        alert("You exited fullscreen. Test will be submitted!");
+        submitTest();
+    }
+});
+
+
+// 🔒 TAB SWITCH ONLY (no double trigger)
+function forceSubmit() {
+    alert("Cheating detected! Test will be submitted.");
+    submitTest();
+}
+
+document.addEventListener("visibilitychange", function () {
+    if (document.hidden) {
+        forceSubmit();
+    }
+});
+
+
+
+
+// 🔒 DISABLE RIGHT CLICK
+document.addEventListener("contextmenu", function(e) {
+    e.preventDefault();
+});
+
+
+// 🔒 DISABLE COPY / PASTE
+document.addEventListener("copy", e => e.preventDefault());
+document.addEventListener("paste", e => e.preventDefault());
+document.addEventListener("cut", e => e.preventDefault());
+
+
+// 🔒 CONTROL SHORTCUT KEYS (SMART BLOCK)
+document.addEventListener("keydown", function(e) {
+
+    if (e.ctrlKey && ["c","v","u","s","p"].includes(e.key.toLowerCase())) {
+        e.preventDefault();
+    }
+
+    if (e.key === "F12") {
+        e.preventDefault();
+    }
+
+    if (e.ctrlKey && e.shiftKey && e.key === "I") {
+        e.preventDefault();
+    }
+
+});
+
+
+// 🔒 PREVENT BACK BUTTON
+history.pushState(null, null, location.href);
+window.onpopstate = function () {
+    history.go(1);
+};
+
 </script>
 
 </body>
-
 </html>

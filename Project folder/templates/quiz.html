@@ -20,7 +20,7 @@
     <h2>Question {{ qnum + 1 }} of {{ total }}</h2>
 
     <form method="POST">
-        {{ csrf_token() }}
+    
 
         <p><b>{{ question.question }}</b></p>
 
@@ -50,9 +50,9 @@
 
     <br><br>
 
-    <button type="button" onclick="window.location.href='/result'">
-        Submit Test
-    </button>
+    <button type="button" onclick="submitTest()">
+    Submit Test
+</button>
 
 </div>
 
@@ -77,10 +77,11 @@ function startTimer(){
         sessionStorage.setItem("time", time);
 
         if(time < 0){
-            clearInterval(countdown);
-            alert("Time is up! Submitting test...");
-            window.location.href = "/result";
-        }
+    clearInterval(countdown);
+    alert("Time is up! Submitting test...");
+    sessionStorage.removeItem("time");
+    window.location.href = "/result";
+}
 
     },1000);
 }
